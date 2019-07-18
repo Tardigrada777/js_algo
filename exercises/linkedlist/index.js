@@ -85,8 +85,7 @@ class LinkedList {
   }
   insertAt(data, index) {
     if (!this.head || index === 0) return this.insertFirst(data);
-    if (index >= this.size()) return this.insertLast(data);
-    let prevNode = this.getAt(index - 1);
+    let prevNode = this.getAt(index - 1) || this.getLast();
     let node = new Node(data, prevNode.next);
     prevNode.next = node;
   }
