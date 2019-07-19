@@ -89,6 +89,24 @@ class LinkedList {
     let node = new Node(data, prevNode.next);
     prevNode.next = node;
   }
+  forEach(fn) {
+    let node = this.head;
+    let index = 0;
+    while (node) {
+      fn(node, index);
+      index++;
+      node = node.next;
+    }
+  }
+
+  // Итератор для экземпляра класса
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
